@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ts-expo-skeleton",
-    "slug": "ts-expo-skeleton",
+    "name": "parcels",
+    "slug": "parcels",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0f59534c-5f4e-477d-b39d-df0aea18a4d6"
+      }
+    },
+    "owner": "davidfs"
   }
 }
