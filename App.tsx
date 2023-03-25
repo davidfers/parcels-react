@@ -1,14 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import ParcelListScreen from './src/screens/ParcelListScreen';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 export default function App() {
-
   return (
-  <SafeAreaProvider>
-    <ParcelListScreen />
-  </SafeAreaProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <PaperProvider>
+        <ParcelListScreen />
+      </PaperProvider>
+    </GestureHandlerRootView>
   );
 }
 

@@ -1,23 +1,26 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
-
+import { StyleSheet, View, Button, Text, SafeAreaView } from 'react-native';
+import Constants from 'expo-constants';
 
 import BottomSheetMenu from '../components/BottomSheetMenu';
 
-
 export default function App() {
-
   return (
-    <View style={styles.container}>
-      <BottomSheetMenu title='Testing'/>
-    </View>
+    <>
+      <Text>Open up App.tsx to start working on your app!</Text>
+      <BottomSheetMenu title='haha'>
+        <View>
+          <Text>haha</Text>
+        </View>
+      </BottomSheetMenu>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#1c466e',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -48,5 +51,3 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
 });
-
-
