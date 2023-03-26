@@ -1,13 +1,10 @@
-import React, { useRef, useMemo, useEffect, useCallback } from 'react';
-
-import { StyleSheet, View, SafeAreaView } from 'react-native';
+import React, { useRef, useMemo, useCallback } from 'react';
+import { StyleSheet, View } from 'react-native';
 import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetBackgroundProps,
 } from '@gorhom/bottom-sheet';
-import { IconButton } from 'react-native-paper';
-
-import { ScrollView } from 'react-native-gesture-handler';
+import { IconButton, MD3Colors } from 'react-native-paper';
 
 type BottomSheetComponentProps = {
   title: string;
@@ -18,7 +15,7 @@ const BottomSheetComponent: React.FunctionComponent<
   BottomSheetComponentProps
 > = ({ title, children }) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ['40%'], []);
+  const snapPoints = useMemo(() => ['50%'], []);
   const handleClosePress = () => bottomSheetRef.current?.snapToIndex(0);
   const handleButtonPress = () => bottomSheetRef.current?.expand();
   const renderBackdrop = useCallback(
@@ -34,13 +31,15 @@ const BottomSheetComponent: React.FunctionComponent<
   );
 
   return (
-    <>
+    <View style={styles.container}>
       <IconButton
         onPress={handleButtonPress}
         icon='plus'
         mode='contained'
-        containerColor='red'
+        containerColor={MD3Colors.error50}
         iconColor='white'
+        style={styles.button}
+        size={36}
       />
       <BottomSheet
         ref={bottomSheetRef}
@@ -52,7 +51,7 @@ const BottomSheetComponent: React.FunctionComponent<
       >
         {children}
       </BottomSheet>
-    </>
+    </View>
   );
 };
 
@@ -60,11 +59,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-end',
-    marginBottom: 36, // add some margin to separate it from the bottom of the screen
   },
   button: {
-    padding: 15,
-    backgroundColor: 'red',
+    alignSelf: 'center',
+    marginBottom: 30,
   },
   buttonContainer: {
     backgroundColor: 'white',

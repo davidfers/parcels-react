@@ -1,17 +1,47 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Button, Text, SafeAreaView } from 'react-native';
 import Constants from 'expo-constants';
-
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import BottomSheetMenu from '../components/BottomSheetMenu';
+import { RootStackParamList } from '../types';
+import ParcelForm from '../components/ParcelForm';
 
-export default function App() {
+type AppScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'ParcelDayDetail'
+>;
+// date 26/03/2023
+
+function padTo2Digits(num: number) {
+  return num.toString().padStart(2, '0');
+}
+
+function formatDate(date: Date) {
+  return [
+    padTo2Digits(date.getDate()),
+    padTo2Digits(date.getMonth() + 1),
+    date.getFullYear(),
+  ].join('/');
+}
+
+type AppProps = {
+  navigation: AppScreenNavigationProp;
+};
+
+export default function App({ navigation }: AppProps) {
   return (
     <>
+      <Button
+        title="Go to Jane's profile"
+        onPress={() =>
+          navigation.navigate('ParcelDayDetail', {
+            day: formatDate(new Date()),
+          })
+        }
+      />
       <Text>Open up App.tsx to start working on your app!</Text>
       <BottomSheetMenu title='haha'>
-        <View>
-          <Text>haha</Text>
-        </View>
+        <ParcelForm />
       </BottomSheetMenu>
     </>
   );
